@@ -18,7 +18,7 @@ def ElapsedTime(DumyTime):
     #Elapsed = SensorTime - InitialTime
     #InitialTime = Elapsed
     #return InitialTime
-    return 2.0 #Dummy variable
+    return 2 #Dummy variable
 
 # Height formula
 def HeightFunction():
@@ -27,6 +27,14 @@ def HeightFunction():
     time = ElapsedTime(DummyTime)
     height = float(0.5 * yacceleration * time * time)
     return height
+
+#Function For Resultant Velocity
+def ResultantVel():
+    Fx = FinalVelx(FVelx)
+    Fy = FinalVely(FVely)
+    Fz = FinalVelz(FVelz)
+    RVel = (Fx**2+Fy**2+Fz**2)**(1/2)
+    return RVel
 
 
 # Final XVelocity
@@ -59,26 +67,17 @@ def FinalVelz(FVelz):
     return IVelz
 
 
-#Function For Resultant Velocity
-def ResultantVel():
-    Fx = FinalVelx(FVelx)
-    Fy = FinalVely(FVely)
-    Fz = FinalVelz(FVelz)
-    RVel = (Fx**2+Fy**2+Fz**2)**(1/2)
-    return RVel
-
-
 # Creating a loop to apply everything
 while i != 0:
     i += 1
     print("Height:" + str(HeightFunction()))
+    print("Resultant Velocity:" + str(ResultantVel()))
     FVelx = float(FinalVelx(FVelx))
     print("X-Velocity:" + str(FVelx))
     FVely = float(FinalVely(FVely))
     print("Y-Velocity:" + str(FVely))
     FVelz = float(FinalVelz(FVelz))
     print("Z-Velocity:" + str(FVelz))
-    print("Resultant Velocity:" + str(ResultantVel()))
     if i % 25 == 0:
         i = int(input("Enter 0 to stop the loop  "))
     else:
